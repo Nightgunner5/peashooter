@@ -24,68 +24,72 @@ import static playn.core.PlayN.graphics;
 import playn.core.ResourceCallback;
 
 public abstract class Entity {
-  final ImageLayer layer;
-  float x, y, angle;
 
-  public Entity(final PeaWorld peaWorld, float px, float py, float pangle) {
-    this.x = px;
-    this.y = py;
-    this.angle = pangle;
-    layer = graphics().createImageLayer(getImage());
-    initPreLoad(peaWorld);
-    getImage().addCallback(new ResourceCallback<Image>() {
-      @Override
-      public void done(Image image) {
-        // since the image is loaded, we can use its width and height
-        layer.setOrigin(image.width() / 2f, image.height() / 2f);
-        layer.setScale(getWidth() / image.width(), getHeight() / image.height());
-        layer.setTranslation(x, y);
-        layer.setRotation(angle);
-        initPostLoad(peaWorld);
-      }
+	final ImageLayer layer;
+	float x, y, angle;
 
-      @Override
-      public void error(Throwable err) {
-        PlayN.log().error("Error loading image: " + err.getMessage());
-      }
-    });
-  }
+	public Entity( final PeaWorld peaWorld, float px, float py, float pangle ) {
+		this.x = px;
+		this.y = py;
+		this.angle = pangle;
+		layer = graphics().createImageLayer( getImage() );
+		initPreLoad( peaWorld );
+		getImage().addCallback( new ResourceCallback<Image>() {
+			@Override
+			public void done( Image image ) {
+				// since the image is loaded, we can use its width and height
+				layer.setOrigin( image.width() / 2f, image.height() / 2f );
+				layer.setScale( getWidth() / image.width(), getHeight() / image
+						.height() );
+				layer.setTranslation( x, y );
+				layer.setRotation( angle );
+				initPostLoad( peaWorld );
+			}
 
-  /**
-   * Perform pre-image load initialization (e.g., attaching to PeaWorld layers).
-   *
-   * @param peaWorld
-   */
-  public abstract void initPreLoad(final PeaWorld peaWorld);
+			@Override
+			public void error( Throwable err ) {
+				PlayN.log().error( "Error loading image: " + err.getMessage() );
+			}
+		} );
+	}
 
-  /**
-   * Perform post-image load initialization (e.g., attaching to PeaWorld layers).
-   *
-   * @param peaWorld
-   */
-  public abstract void initPostLoad(final PeaWorld peaWorld);
+	/**
+	 * Perform pre-image load initialization (e.g., attaching to PeaWorld
+	 * layers).
+	 *
+	 * @param peaWorld
+	 */
+	public abstract void initPreLoad( final PeaWorld peaWorld );
 
-  public void paint(float alpha) {
-  }
+	/**
+	 * Perform post-image load initialization (e.g., attaching to PeaWorld
+	 * layers).
+	 *
+	 * @param peaWorld
+	 */
+	public abstract void initPostLoad( final PeaWorld peaWorld );
 
-  public void update(float delta) {
-  }
+	public void paint( float alpha ) {
+	}
 
-  public void setPos(float x, float y) {
-    layer.setTranslation(x, y);
-  }
+	public void update( float delta ) {
+	}
 
-  public void setAngle(float a) {
-    layer.setRotation(a);
-  }
+	public void setPos( float x, float y ) {
+		layer.setTranslation( x, y );
+	}
 
-  abstract float getWidth();
+	public void setAngle( float a ) {
+		layer.setRotation( a );
+	}
 
-  abstract float getHeight();
+	abstract float getWidth();
 
-  public abstract Image getImage();
+	abstract float getHeight();
 
-  protected static Image loadImage(String name) {
-    return assets().getImage("images/" + name);
-  }
+	public abstract Image getImage();
+
+	protected static Image loadImage( String name ) {
+		return assets().getImage( "images/" + name );
+	}
 }

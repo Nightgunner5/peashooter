@@ -26,57 +26,57 @@ import org.jbox2d.dynamics.World;
 import playn.core.Image;
 
 public class Block extends StaticPhysicsEntity {
-  public static String TYPE = "Block";
 
-  public Block(final PeaWorld peaWorld, World world, float x, float y, float angle) {
-    super(peaWorld, world, x, y, angle);
-  }
+	public static String TYPE = "Block";
 
-  @Override
-  Body initPhysicsBody(World world, float x, float y, float angle) {
-    FixtureDef fixtureDef = new FixtureDef();
-    BodyDef bodyDef = new BodyDef();
-    bodyDef.type = BodyType.STATIC;
-    bodyDef.position = new Vec2(0, 0);
-    Body body = world.createBody(bodyDef);
+	public Block( final PeaWorld peaWorld, World world, float x, float y, float angle ) {
+		super( peaWorld, world, x, y, angle );
+	}
 
-    PolygonShape polygonShape = new PolygonShape();
-    Vec2[] polygon = new Vec2[4];
-    polygon[0] = new Vec2(-getWidth()/2f, -getHeight()/2f + getTopOffset());
-    polygon[1] = new Vec2(getWidth()/2f, -getHeight()/2f + getTopOffset());
-    polygon[2] = new Vec2(getWidth()/2f, getHeight()/2f);
-    polygon[3] = new Vec2(-getWidth()/2f, getHeight()/2f);
-    polygonShape.set(polygon, polygon.length);
-    fixtureDef.shape = polygonShape;
-    fixtureDef.friction = 0.1f;
-    fixtureDef.restitution = 0.8f;
-    body.createFixture(fixtureDef);
-    body.setTransform(new Vec2(x, y), angle);
-    return body;
-  }
+	@Override
+	Body initPhysicsBody( World world, float x, float y, float angle ) {
+		FixtureDef fixtureDef = new FixtureDef();
+		BodyDef bodyDef = new BodyDef();
+		bodyDef.type = BodyType.STATIC;
+		bodyDef.position = new Vec2( 0, 0 );
+		Body body = world.createBody( bodyDef );
 
-  @Override
-  float getWidth() {
-    return 2.0f;
-  }
+		PolygonShape polygonShape = new PolygonShape();
+		Vec2[] polygon = new Vec2[4];
+		polygon[0] = new Vec2( -getWidth() / 2f, -getHeight() / 2f + getTopOffset() );
+		polygon[1] = new Vec2( getWidth() / 2f, -getHeight() / 2f + getTopOffset() );
+		polygon[2] = new Vec2( getWidth() / 2f, getHeight() / 2f );
+		polygon[3] = new Vec2( -getWidth() / 2f, getHeight() / 2f );
+		polygonShape.set( polygon, polygon.length );
+		fixtureDef.shape = polygonShape;
+		fixtureDef.friction = 0.1f;
+		fixtureDef.restitution = 0.8f;
+		body.createFixture( fixtureDef );
+		body.setTransform( new Vec2( x, y ), angle );
+		return body;
+	}
 
-  @Override
-  float getHeight() {
-    return 2.0f;
-  }
+	@Override
+	float getWidth() {
+		return 2.0f;
+	}
 
-  /**
-   * Return the size of the offset where the block is slightly lower than where
-   * the image is drawn for a depth effect
-   */
-  public float getTopOffset() {
-    return 2.0f / 8f;
-  }
+	@Override
+	float getHeight() {
+		return 2.0f;
+	}
 
-  @Override
-  public Image getImage() {
-    return image;
-  }
+	/**
+	 * Return the size of the offset where the block is slightly lower than
+	 * where the image is drawn for a depth effect
+	 */
+	public float getTopOffset() {
+		return 2.0f / 8f;
+	}
 
-  private static Image image = loadImage("Block-Normal.png");
+	@Override
+	public Image getImage() {
+		return image;
+	}
+	private static Image image = loadImage( "Block-Normal.png" );
 }

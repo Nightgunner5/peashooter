@@ -15,26 +15,26 @@
  */
 package net.llamaslayers.peashooter.core.entities;
 
-import playn.core.Image;
 import net.llamaslayers.peashooter.core.PeaWorld;
+import playn.core.Image;
 
 public class Cloud3 extends Cloud1 {
-  @SuppressWarnings("hiding")
-  public static String TYPE = "Cloud3";
 
-  public Cloud3(PeaWorld peaWorld) {
-    super(peaWorld);
-  }
+	@SuppressWarnings( "hiding" )
+	public static String TYPE = "Cloud3";
 
-  @Override
-  float getVelocity() {
-    return 0.002f;
-  }
+	public Cloud3( PeaWorld peaWorld ) {
+		super( peaWorld );
+	}
 
-  @Override
-  public Image getImage() {
-    return image;
-  }
+	@Override
+	float getVelocity() {
+		return 0.002f;
+	}
 
-  private static Image image = loadImage("Cloud3.png");
+	@Override
+	public Image getImage() {
+		return image;
+	}
+	private static Image image = loadImage( "Cloud3.png" );
 }

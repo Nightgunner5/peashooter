@@ -33,7 +33,8 @@ public class PeaShooterGame implements Game {
 		worldLayer.setScale( 1f / physUnitPerScreenUnit );
 		graphics().rootLayer().add( worldLayer );
 
-		PeaLoader.CreateWorld( "levels/level1.json", worldLayer, new ResourceCallback<PeaWorld>() {
+		PeaLoader
+				.CreateWorld( "levels/level1.json", worldLayer, new ResourceCallback<PeaWorld>() {
 			@Override
 			public void done( PeaWorld resource ) {
 				world = resource;

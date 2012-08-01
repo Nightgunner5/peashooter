@@ -15,57 +15,57 @@
  */
 package net.llamaslayers.peashooter.core.entities;
 
-import playn.core.Image;
 import net.llamaslayers.peashooter.core.PeaWorld;
+import playn.core.Image;
 
 public class FakeBlock extends Entity {
-  public static String TYPE = "FakeBlock";
 
-  public FakeBlock(PeaWorld peaWorld, float x, float y, float angle) {
-    super(peaWorld, x, y, angle);
-  }
+	public static String TYPE = "FakeBlock";
 
-  @Override
-  public void paint(float alpha) {
-  }
+	public FakeBlock( PeaWorld peaWorld, float x, float y, float angle ) {
+		super( peaWorld, x, y, angle );
+	}
 
-  @Override
-  public void update(float delta) {
-  }
+	@Override
+	public void paint( float alpha ) {
+	}
 
-  @Override
-  public void setPos(float x, float y) {
-    layer.setTranslation(x, y);
-  }
+	@Override
+	public void update( float delta ) {
+	}
 
-  @Override
-  public void setAngle(float a) {
-    layer.setRotation(a);
-  }
+	@Override
+	public void setPos( float x, float y ) {
+		layer.setTranslation( x, y );
+	}
 
-  @Override
-  float getWidth() {
-    return 2.0f;
-  }
+	@Override
+	public void setAngle( float a ) {
+		layer.setRotation( a );
+	}
 
-  @Override
-  float getHeight() {
-    return 2.0f;
-  }
+	@Override
+	float getWidth() {
+		return 2.0f;
+	}
 
-  @Override
-  public void initPreLoad(PeaWorld peaWorld) {
-    peaWorld.staticLayerBack.add(layer);
-  }
+	@Override
+	float getHeight() {
+		return 2.0f;
+	}
 
-  @Override
-  public void initPostLoad(PeaWorld peaWorld) {
-  }
+	@Override
+	public void initPreLoad( PeaWorld peaWorld ) {
+		peaWorld.staticLayerBack.add( layer );
+	}
 
-  @Override
-  public Image getImage() {
-    return image;
-  }
+	@Override
+	public void initPostLoad( PeaWorld peaWorld ) {
+	}
 
-  private static Image image = loadImage("Block-Normal.png");
+	@Override
+	public Image getImage() {
+		return image;
+	}
+	private static Image image = loadImage( "Block-Normal.png" );
 }

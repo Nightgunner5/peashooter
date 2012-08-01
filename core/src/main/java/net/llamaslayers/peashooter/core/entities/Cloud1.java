@@ -15,71 +15,71 @@
  */
 package net.llamaslayers.peashooter.core.entities;
 
-import playn.core.Image;
 import net.llamaslayers.peashooter.core.PeaWorld;
+import playn.core.Image;
 
 public class Cloud1 extends Entity {
-  public static String TYPE = "Cloud1";
 
-  public Cloud1(PeaWorld peaWorld) {
-    super(peaWorld, 0, 0, 0);
-    y = (float) (Math.random() * getMaximumHeight());
-    x = (float) (Math.random() * getMaximumWidth());
-  }
+	public static String TYPE = "Cloud1";
 
-  @Override
-  public void update(float delta) {
-    x += delta * getVelocity();
-    layer.setTranslation(x, y);
+	public Cloud1( PeaWorld peaWorld ) {
+		super( peaWorld, 0, 0, 0 );
+		y = (float) ( Math.random() * getMaximumHeight() );
+		x = (float) ( Math.random() * getMaximumWidth() );
+	}
 
-    if (x > getWidth() + getMaximumWidth()) {
-      x = -getWidth();
-      y = (float) (Math.random() * getMaximumHeight());
-    }
-  }
+	@Override
+	public void update( float delta ) {
+		x += delta * getVelocity();
+		layer.setTranslation( x, y );
 
-  @Override
-  float getWidth() {
-    return 0.3f * 26.0f;
-  }
+		if ( x > getWidth() + getMaximumWidth() ) {
+			x = -getWidth();
+			y = (float) ( Math.random() * getMaximumHeight() );
+		}
+	}
 
-  @Override
-  float getHeight() {
-    return 0.3f * 18.0f;
-  }
+	@Override
+	float getWidth() {
+		return 0.3f * 26.0f;
+	}
 
-  float getMaximumWidth() {
-    return 24.0f;
-  }
+	@Override
+	float getHeight() {
+		return 0.3f * 18.0f;
+	}
 
-  float getMaximumHeight() {
-    return 3.0f;
-  }
+	float getMaximumWidth() {
+		return 24.0f;
+	}
 
-  float getVelocity() {
-    return 0.003f;
-  }
+	float getMaximumHeight() {
+		return 3.0f;
+	}
 
-  @Override
-  public void setPos(float x, float y) {
-    this.x = x;
-    this.y = y;
-    layer.setTranslation(x, y);
-  }
+	float getVelocity() {
+		return 0.003f;
+	}
 
-  @Override
-  public void initPreLoad(PeaWorld peaWorld) {
-    peaWorld.dynamicLayer.add(layer);
-  }
+	@Override
+	public void setPos( float x, float y ) {
+		this.x = x;
+		this.y = y;
+		layer.setTranslation( x, y );
+	}
 
-  @Override
-  public void initPostLoad(PeaWorld peaWorld) {
-  }
+	@Override
+	public void initPreLoad( PeaWorld peaWorld ) {
+		peaWorld.dynamicLayer.add( layer );
+	}
 
-  @Override
-  public Image getImage() {
-    return image;
-  }
+	@Override
+	public void initPostLoad( PeaWorld peaWorld ) {
+	}
 
-  private static Image image = loadImage("Cloud1.png");
+	@Override
+	public Image getImage() {
+		return image;
+	}
+	private static Image image = loadImage( "Cloud1.png" );
 }

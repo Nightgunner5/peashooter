@@ -87,8 +87,8 @@ public class PeaWorld implements ContactListener {
 
 		if ( showDebugDraw ) {
 			CanvasImage image = graphics()
-															   .createImage( (int) ( width / PeaShooterGame.physUnitPerScreenUnit ),
-																			 (int) ( height / PeaShooterGame.physUnitPerScreenUnit ) );
+										 .createImage( (int) ( width / PeaShooterGame.physUnitPerScreenUnit ),
+													   (int) ( height / PeaShooterGame.physUnitPerScreenUnit ) );
 			graphics().rootLayer().add( graphics().createImageLayer( image ) );
 			debugDraw = new DebugDrawBox2D();
 			debugDraw.setCanvas( image );
@@ -98,7 +98,8 @@ public class PeaWorld implements ContactListener {
 			debugDraw.setStrokeWidth( 2.0f );
 			debugDraw
 					.setFlags( DebugDraw.e_shapeBit | DebugDraw.e_jointBit | DebugDraw.e_aabbBit );
-			debugDraw.setCamera( 0, 0, 1f / PeaShooterGame.physUnitPerScreenUnit );
+			debugDraw
+					.setCamera( 0, 0, 1f / PeaShooterGame.physUnitPerScreenUnit );
 			world.setDebugDraw( debugDraw );
 		}
 	}

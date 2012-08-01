@@ -26,54 +26,51 @@ import org.jbox2d.dynamics.World;
 import playn.core.Image;
 
 public class Pea extends DynamicPhysicsEntity {
-  public static String TYPE = "Pea";
 
-  public Pea(PeaWorld peaWorld, World world, float x, float y, float angle) {
-    super(peaWorld, world, x, y, angle);
-  }
+	public static String TYPE = "Pea";
 
-  @Override
-  Body initPhysicsBody(World world, float x, float y, float angle) {
-    FixtureDef fixtureDef = new FixtureDef();
-    BodyDef bodyDef = new BodyDef();
-    bodyDef.type = BodyType.DYNAMIC;
-    bodyDef.position = new Vec2(0, 0);
-    Body body = world.createBody(bodyDef);
+	public Pea( PeaWorld peaWorld, World world, float x, float y, float angle ) {
+		super( peaWorld, world, x, y, angle );
+	}
 
-    CircleShape circleShape = new CircleShape();
-    circleShape.m_radius = getRadius();
-    fixtureDef.shape = circleShape;
-    fixtureDef.density = 0.4f;
-    fixtureDef.friction = 0.1f;
-    fixtureDef.restitution = 0.35f;
-    circleShape.m_p.set(0, 0);
-    body.createFixture(fixtureDef);
-    body.setLinearDamping(0.2f);
-    body.setTransform(new Vec2(x, y), angle);
-    return body;
-  }
+	@Override
+	Body initPhysicsBody( World world, float x, float y, float angle ) {
+		FixtureDef fixtureDef = new FixtureDef();
+		BodyDef bodyDef = new BodyDef();
+		bodyDef.type = BodyType.DYNAMIC;
+		bodyDef.position = new Vec2( 0, 0 );
+		Body body = world.createBody( bodyDef );
 
-  @Override
-  float getWidth() {
-    return 2 * getRadius();
-  }
+		CircleShape circleShape = new CircleShape();
+		circleShape.m_radius = getRadius();
+		fixtureDef.shape = circleShape;
+		fixtureDef.density = 0.4f;
+		fixtureDef.friction = 0.1f;
+		fixtureDef.restitution = 0.35f;
+		circleShape.m_p.set( 0, 0 );
+		body.createFixture( fixtureDef );
+		body.setLinearDamping( 0.2f );
+		body.setTransform( new Vec2( x, y ), angle );
+		return body;
+	}
 
-  @Override
-  float getHeight() {
-    return 2 * getRadius();
-  }
+	@Override
+	float getWidth() {
+		return 2 * getRadius();
+	}
 
-  float getRadius() {
-    //return 1.50f;
-    return 0.5f;
-  }
+	@Override
+	float getHeight() {
+		return 2 * getRadius();
+	}
 
-  @Override
-  public Image getImage() {
-    return image;
-    // return chrome;
-  }
+	float getRadius() {
+		return 0.5f;
+	}
 
-  private static Image image = loadImage("pea.png");
-  // private static Image chrome = loadImage("chrome.png");
+	@Override
+	public Image getImage() {
+		return image;
+	}
+	private static Image image = loadImage( "pea.png" );
 }
